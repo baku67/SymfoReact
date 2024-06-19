@@ -4,29 +4,43 @@ namespace App\Entity;
 
 use App\Repository\TaskRepository;
 use Doctrine\DBAL\Types\Types;
+
+use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
+#[ApiResource(
+    normalizationContext: ['groups' => ['article:read']],
+    denormalizationContext: ['groups' => ['article:write']]
+)]
+
 class Task
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\Column(type: 'integer')]
+    #[Groups(['article:read'])]
+    private $id;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['article:read', 'article:write'])]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups(['article:read', 'article:write'])]
     private ?string $text = null;
 
     #[ORM\Column(length: 50)]
+    #[Groups(['article:read', 'article:write'])]
     private ?string $status = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['article:read', 'article:write'])]
     private ?string $mediaUrl = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Groups(['article:read', 'article:write'])]
     private ?\DateTimeInterface $creationDate = null;
 
 

@@ -17,6 +17,14 @@ framework:
     php_errors:
         log: true
 
+
+    # cors:
+    #     allow_origin: ['*']  # You can adjust this to specific origins
+    #     allow_methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+    #     allow_headers: ['Content-Type', 'Authorization']
+    #     max_age: 3600
+    #     supports_credentials: false
+
 when@test:
     framework:
         test: true

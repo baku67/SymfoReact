@@ -24,8 +24,7 @@ class Project
     #[ORM\GeneratedValue]
     #[ORM\Column]
     #[Groups(['project:read'])]
-    // private ?int $id = null;
-    private $id;
+    private ?int $id = null;
 
     #[ORM\Column(length: 255)]
     #[Groups(['project:read', 'project:write'])]

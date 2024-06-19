@@ -16,18 +16,17 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        // Créer 10 tasks pour chaque projet
-        for ($i = 1; $i <= 10; $i++) {
-            for ($j = 1; $j <= 10; $j++) {
+        for ($i = 1; $i <= 2; $i++) {
+            $project = $this->getReference('project_' . $i);
+
+            for ($j = 1; $j <= 5; $j++) {
                 $task = new Task();
                 $task->setTitle('Task ' . $j);
                 $task->setText('Contenu de la tâche ' . $j);
                 $task->setStatus("open");
                 $task->setMediaUrl("urlduMedia.webp");
                 $task->setCreationDate(new DateTime());
-
-                // Associer la tâche au projet
-                $task->setProject($this->getReference('project_' . $i));
+                $task->setProject($project);
 
                 $manager->persist($task);
             }

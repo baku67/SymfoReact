@@ -23,8 +23,7 @@ class Task
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     #[Groups(['task:read'])]
-    // private ?int $id = null;
-    private $id;
+    private ?int $id = null;
 
     #[ORM\Column(length: 255)]
     #[Groups(['task:read', 'task:write'])]

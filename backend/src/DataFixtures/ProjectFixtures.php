@@ -13,16 +13,11 @@ class ProjectFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // Créer 10 projets pour les tests
-        for ($v = 1; $v <= 10; $v++) {
-            
+        for ($i = 1; $i <= 2; $i++) {
             $project = new Project();
-            $project->setTitle('Project ' . $v);
-
+            $project->setTitle('Project ' . $i);
             $manager->persist($project);
-
-            // Sauvegarder la référence pour utiliser plus tard dans TaskFixtures
-            $this->addReference('project_' . $v, $project);
+            $this->addReference('project_' . $i, $project);
         }
 
         $manager->flush();

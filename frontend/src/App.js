@@ -1,37 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
 
-import TaskList from './Components/TaskList.js';
-import ProjectList from './Components/ProjectList.js';
+
+import Dashboard from './Components/Dashboard.js';
+import { Header } from './Components/Header.js';
+
 
 
 function App() {
+
   return (
 
     <div className="App">
 
-      <header className="App-header">
+      <Header title={"Tableau de bord"} />
 
-        <img src={logo} className="App-logo" alt="logo" />
-
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Raec
-        </a>
-
-        <ProjectList />
-
-        <TaskList />
-
-      </header>
+      <main>
+        <Dashboard />
+      </main>
 
     </div>
 

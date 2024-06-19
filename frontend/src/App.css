@@ -78,6 +78,12 @@ p {margin: 0;}
 }
 
 
+.tasksListsContainer {
+  display: inline-flex;
+  
+}
+
+
 
 .taskRowList {
   width: 50%;

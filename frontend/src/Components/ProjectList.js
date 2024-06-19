@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 
@@ -30,10 +31,12 @@ export default function ProjectList() {
 
                 {projects.map(project => (
                     
-                    <div key={project.id} className="projectRow">
-                        <span>{project.title}</span>
-                        <span>Tâches: {project.tasks.length}</span>
-                    </div>
+                    <Link key={project.id} href={`/projet/${project.id}`}>
+                        <div className="projectRow">
+                            <span>{project.title}</span>
+                            <span>Tâches: {project.tasks.length}</span>
+                        </div>
+                    </Link>
                 ))}
 
             </div>

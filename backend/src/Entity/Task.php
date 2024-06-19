@@ -34,6 +34,7 @@ class Task
     #[Groups(['task:read', 'task:write'])]
     private ?string $text = null;
 
+    // todo, inProgress, completed
     #[ORM\Column(length: 50)]
     #[Groups(['task:read', 'task:write'])]
     private ?string $status = null;

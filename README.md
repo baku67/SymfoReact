@@ -1,11 +1,13 @@
 
 
 * React frontend:
-npm run build, move dossier build into ../backend/public (Pas besoin de rebuild, modifs reflétées)
-npm start
+(~ npm run build, moved ../backend/public )
+~ npm start
 
 * Symfony backend:
-symfony serve
+Charger les fixtures:
+~ php bin/console doctrine:fixtures:load
+~ symfony serve
 
 
 http://localhost:3000/ (/)

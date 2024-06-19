@@ -11,8 +11,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
 #[ApiResource(
-    normalizationContext: ['groups' => ['article:read']],
-    denormalizationContext: ['groups' => ['article:write']]
+    normalizationContext: ['groups' => ['task:read']],
+    denormalizationContext: ['groups' => ['task:write']]
 )]
 
 class Task
@@ -20,27 +20,27 @@ class Task
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(['article:read'])]
+    #[Groups(['task:read'])]
     private $id;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['article:read', 'article:write'])]
+    #[Groups(['task:read', 'task:write'])]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    #[Groups(['article:read', 'article:write'])]
+    #[Groups(['task:read', 'task:write'])]
     private ?string $text = null;
 
     #[ORM\Column(length: 50)]
-    #[Groups(['article:read', 'article:write'])]
+    #[Groups(['task:read', 'task:write'])]
     private ?string $status = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(['article:read', 'article:write'])]
+    #[Groups(['task:read', 'task:write'])]
     private ?string $mediaUrl = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    #[Groups(['article:read', 'article:write'])]
+    #[Groups(['task:read', 'task:write'])]
     private ?\DateTimeInterface $creationDate = null;
 
 

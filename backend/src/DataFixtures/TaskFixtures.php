@@ -19,9 +19,9 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
         for ($i = 1; $i <= 2; $i++) {
             $project = $this->getReference('project_' . $i);
 
-            for ($j = 1; $j <= 5; $j++) {
+            for ($j = 1; $j <= 2; $j++) {
                 $task = new Task();
-                $task->setTitle('Task ' . $j);
+                $task->setTitle('Task à venir ' . $j);
                 $task->setText('tâche à venir ' . $j);
                 // todo, inProgress, completed
                 $task->setStatus("todo"); 
@@ -34,7 +34,7 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
 
             for ($j = 1; $j <= 5; $j++) {
                 $task = new Task();
-                $task->setTitle('Task ' . $j);
+                $task->setTitle('Task en cours ' . $j);
                 $task->setText('tâche en cours ' . $j);
                 // todo, inProgress, completed
                 $task->setStatus("inProgress"); 
@@ -45,9 +45,9 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
                 $manager->persist($task);
             }
 
-            for ($j = 1; $j <= 5; $j++) {
+            for ($j = 1; $j <= 3; $j++) {
                 $task = new Task();
-                $task->setTitle('Task ' . $j);
+                $task->setTitle('Task terminée' . $j);
                 $task->setText('tâche terminée ' . $j);
                 // todo, inProgress, completed
                 $task->setStatus("completed"); 

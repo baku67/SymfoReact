@@ -1,3 +1,8 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+
+project_tasks:
+    path: /api/projects/{id}/tasks
+    controller: App\Controller\ProjectTasksController
+    methods: [GET]

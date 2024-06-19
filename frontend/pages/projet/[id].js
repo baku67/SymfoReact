@@ -22,16 +22,13 @@ const ProjectDetails = () => {
                 .then(response => {
                     const projectData = response.data;
                     setProject(projectData);
-                    
-                    // Récupérer les détails de chaque tâche
-                    const taskRequests = projectData.tasks.map(taskUrl => axios.get(`http://localhost:8000${taskUrl}`));
-                    Promise.all(taskRequests)
-                        .then(taskResponses => {
-                            const taskDetails = taskResponses.map(res => res.data);
-                            // Séparer les tâches en cours et terminées
-                            const todo = taskDetails.filter(task => task.status === 'todo');
-                            const inProgress = taskDetails.filter(task => task.status === 'inProgress');
-                            const completed = taskDetails.filter(task => task.status === 'completed');
+
+                    axios.get(`http://localhost:8000/api/projects/${id}/tasks`)
+                        .then(taskResponse => {
+                            const tasks = taskResponse.data;
+                            const todo = tasks.filter(task => task.status === 'todo');
+                            const inProgress = tasks.filter(task => task.status === 'inProgress');
+                            const completed = tasks.filter(task => task.status === 'completed');
                             setTasksTodo(todo);
                             setTasksInProgress(inProgress);
                             setCompletedTasks(completed);

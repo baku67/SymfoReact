@@ -8,6 +8,7 @@ use App\Repository\ProjectRepository;
 
 use ApiPlatform\Metadata\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -27,11 +28,12 @@ class Project
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['project:read', 'project:write'])]
+    #[Groups(['project:read', 'task:read'])]
     private ?string $title = null;
 
     #[ORM\OneToMany(mappedBy: 'project', targetEntity: Task::class, orphanRemoval: true)]
     #[Groups(['project:read', 'project:write'])]
+    #[MaxDepth(1)]
     private Collection $tasks;
 
     public function __construct()

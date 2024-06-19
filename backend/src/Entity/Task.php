@@ -10,6 +10,7 @@ use Doctrine\DBAL\Types\Types;
 use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
 #[ApiResource(
@@ -45,13 +46,18 @@ class Task
     #[Groups(['task:read', 'task:write'])]
     private ?\DateTimeInterface $creationDate = null;
 
-    #[ORM\ManyToOne(targetEntity: Project::class)]
-    #[Groups(['task:read', 'task:write'])]
+    #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: 'tasks')]
+    #[ORM\JoinColumn(nullable: false)]
+    #[Groups(['task:read', 'task:read'])]
+    #[MaxDepth(1)]
     private ?Project $project = null;
 
 
 
-
+    public function __construct()
+    {
+        $this->creationDate = new \DateTime();
+    }
 
 
 

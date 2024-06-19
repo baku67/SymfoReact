@@ -31,7 +31,7 @@ export default function ProjectList() {
                 {projects.map(project => (
                     <div key={project.id} className="projectRow">
                         <span>{project.title}</span>
-                        <span>{project.tasks.length}</span>
+                        <span>Tâches: {project.tasks.length}</span>
                     </div>
                 ))}
 

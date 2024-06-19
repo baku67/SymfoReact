@@ -8,6 +8,7 @@ export default function TaskList() {
 
 
     const [tasks, setTasks] = useState([]);
+    const [projects, setProjects] = useState({});
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/tasks')
@@ -31,7 +32,8 @@ export default function TaskList() {
                 {tasks.map(task => (
                     <div key={task.id} className="taskRow">
                         <span>{task.title}</span>
-                        <span>{task.project}</span>
+                        <span>{task.project.title}</span>
+                        <span>{task.status}</span>
                     </div>
                 ))}
 

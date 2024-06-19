@@ -29,6 +29,7 @@ export default function ProjectList() {
             <div className="projectRowList">
 
                 {projects.map(project => (
+                    
                     <div key={project.id} className="projectRow">
                         <span>{project.title}</span>
                         <span>Tâches: {project.tasks.length}</span>

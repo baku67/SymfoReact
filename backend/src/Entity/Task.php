@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\TaskRepository;
 use Doctrine\DBAL\Types\Types;
 
+// use Entity\Project;
+
 use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -21,6 +23,7 @@ class Task
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     #[Groups(['task:read'])]
+    // private ?int $id = null;
     private $id;
 
     #[ORM\Column(length: 255)]
@@ -42,6 +45,12 @@ class Task
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Groups(['task:read', 'task:write'])]
     private ?\DateTimeInterface $creationDate = null;
+
+    #[ORM\ManyToOne(targetEntity: Project::class)]
+    #[Groups(['task:read', 'task:write'])]
+    private ?Project $project = null;
+
+
 
 
 
@@ -112,4 +121,19 @@ class Task
 
         return $this;
     }
+
+    public function getProject(): ?Project
+    {
+        return $this->project;
+    }
+
+    public function setProject(?Project $project): static
+    {
+        $this->project = $project;
+
+        return $this;
+    }
+
+    
+
 }

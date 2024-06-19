@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 
-import TaskCard from './Components/TaskCard.js';
+import TaskList from './Components/TaskList.js';
+import ProjectList from './Components/ProjectList.js';
 
 
 function App() {
@@ -26,7 +27,9 @@ function App() {
           Learn Raec
         </a>
 
-        <TaskCard />
+        <ProjectList />
+
+        <TaskList />
 
       </header>
 

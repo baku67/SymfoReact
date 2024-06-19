@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 
-export default function TaskCard() {
+export default function TaskList() {
 
 
     const [tasks, setTasks] = useState([]);
@@ -24,7 +24,7 @@ export default function TaskCard() {
 
     return (
         <>
-            <p>HELLOO</p>
+            <p>Liste des tasks (global)</p>
         </>
     )
 

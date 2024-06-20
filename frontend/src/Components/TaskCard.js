@@ -1,20 +1,20 @@
 import { useDrag } from 'react-dnd';
 
-export function TaskCard({ taskTitle }) {
+export function TaskCard({ task }) {
 
     const [{ isDragging }, drag] = useDrag({
         type: 'TASK',
-        item: { title: taskTitle },
+        item: { title: task.title },
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging(),
         }),
     });
 
-    
+
     return (
         <div ref={drag}>
-            <div className="projectRow">
-                <span>{taskTitle}</span>
+            <div className={`taskCard ${task.priority == "primary"? "taskCard-primary" : "taskCard-secondary"}`}>
+                <span>{task.title}</span>
                 {/* {isDragging && "📂"} */}
             </div>
         </div>

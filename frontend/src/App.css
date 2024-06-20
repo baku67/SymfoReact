@@ -77,6 +77,27 @@ p {margin: 0;}
   width: -webkit-fill-available;
 }
 
+.taskCard {
+  margin: 7px auto;
+  padding: 15px;
+  border-radius: 7px;
+  border: 1px solid #ebdddd;
+  background-color: #aebaf5;
+
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: -webkit-fill-available;
+}
+
+.taskCard-primary {
+  
+}
+
+.taskCard-secondary {
+
+}
+
 
 .tasksListsContainer {
   display: inline-flex;

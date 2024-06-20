@@ -34,7 +34,7 @@ class Task
     #[Groups(['task:read', 'task:write'])]
     private ?string $text = null;
 
-    // todo, inProgress, completed
+    // "todo", "inProgress", "completed"
     #[ORM\Column(length: 50)]
     #[Groups(['task:read', 'task:write'])]
     private ?string $status = null;
@@ -52,6 +52,11 @@ class Task
     #[Groups(['task:read', 'task:read'])]
     #[MaxDepth(1)]
     private ?Project $project = null;
+
+    // "primary", "secondary"
+    #[ORM\Column(length: 50)]
+    #[Groups(['task:read', 'task:read'])]
+    private ?string $priority = null;
 
 
 
@@ -136,6 +141,18 @@ class Task
     public function setProject(?Project $project): static
     {
         $this->project = $project;
+
+        return $this;
+    }
+
+    public function getPriority(): ?string
+    {
+        return $this->priority;
+    }
+
+    public function setPriority(string $priority): static
+    {
+        $this->priority = $priority;
 
         return $this;
     }

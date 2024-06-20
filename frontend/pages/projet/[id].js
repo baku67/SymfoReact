@@ -88,7 +88,7 @@ const ProjectDetails = () => {
                                 // <div key={task.id} className="projectRow">
                                 //     <span>{task.title}</span>
                                 // </div>
-                                <TaskCard key={task.id} taskTitle={task.title} />
+                                <TaskCard key={task.id} task={task} />
                             ))}
                         </div>
 
@@ -101,7 +101,7 @@ const ProjectDetails = () => {
                                 // <div key={task.id} className="projectRow">
                                 //     <span>{task.title}</span>
                                 // </div>
-                                <TaskCard key={task.id} taskTitle={task.title} />
+                                <TaskCard key={task.id} task={task} />
                             ))}
                         </div>
 
@@ -114,7 +114,7 @@ const ProjectDetails = () => {
                                 // <div key={task.id} className="projectRow">
                                 //     <span>{task.title}</span>
                                 // </div>
-                                <TaskCard key={task.id} taskTitle={task.title} />
+                                <TaskCard key={task.id} task={task} />
                             ))}
                         </div>
 

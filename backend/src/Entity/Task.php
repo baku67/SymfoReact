@@ -53,10 +53,10 @@ class Task
     #[MaxDepth(1)]
     private ?Project $project = null;
 
-    // "primary", "secondary"
-    #[ORM\Column(length: 50)]
+    // 1, 2
+    #[ORM\Column(type: 'integer')]
     #[Groups(['task:read', 'task:read'])]
-    private ?string $priority = null;
+    private ?int $priority = null;
 
 
 
@@ -145,12 +145,12 @@ class Task
         return $this;
     }
 
-    public function getPriority(): ?string
+    public function getPriority(): ?int
     {
         return $this->priority;
     }
 
-    public function setPriority(string $priority): static
+    public function setPriority(int $priority): static
     {
         $this->priority = $priority;
 

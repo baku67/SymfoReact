@@ -13,7 +13,7 @@ export function TaskCard({ task }) {
 
     return (
         <div ref={drag}>
-            <div className={`taskCard ${task.priority == "primary"? "taskCard-primary" : "taskCard-secondary"}`}>
+            <div className={`taskCard ${task.priority == 1 ? "taskCard-primary" : "taskCard-secondary"}`}>
                 <span>{task.title}</span>
                 {/* {isDragging && "📂"} */}
             </div>

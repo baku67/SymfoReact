@@ -32,8 +32,8 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
             $task1->setMediaUrl("urlduMedia.webp");
             $task1->setCreationDate(new DateTime());
             $task1->setProject($project);
-            // "primary", "secondary"
-            $task1->setPriority("primary");
+            // 1, 2
+            $task1->setPriority(1);
 
             $task2 = new Task();
             $task2->setTitle('Task à venir 2');
@@ -43,8 +43,8 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
             $task2->setMediaUrl("urlduMedia.webp");
             $task2->setCreationDate(new DateTime());
             $task2->setProject($project);
-            // "primary", "secondary"
-            $task2->setPriority("secondary");
+            // 1, 2
+            $task2->setPriority(2);
 
             $manager->persist($task1);
             $manager->persist($task2);
@@ -61,8 +61,8 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
             $task3->setMediaUrl("urlduMedia.webp");
             $task3->setCreationDate(new DateTime());
             $task3->setProject($project);
-            // "primary", "secondary"
-            $task3->setPriority("primary");
+            // 1, 2
+            $task3->setPriority(1);
 
             $task4 = new Task();
             $task4->setTitle('Task en cours 2');
@@ -72,8 +72,8 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
             $task4->setMediaUrl("urlduMedia.webp");
             $task4->setCreationDate(new DateTime());
             $task4->setProject($project);
-            // "primary", "secondary"
-            $task4->setPriority("primary");
+            // 1, 2
+            $task4->setPriority(1);
 
             $task5 = new Task();
             $task5->setTitle('Task en cours 3');
@@ -83,8 +83,8 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
             $task5->setMediaUrl("urlduMedia.webp");
             $task5->setCreationDate(new DateTime());
             $task5->setProject($project);
-            // "primary", "secondary"
-            $task5->setPriority("secondary");
+            // 1, 2
+            $task5->setPriority(2);
 
             $task6 = new Task();
             $task6->setTitle('Task en cours 4');
@@ -94,8 +94,8 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
             $task6->setMediaUrl("urlduMedia.webp");
             $task6->setCreationDate(new DateTime());
             $task6->setProject($project);
-            // "primary", "secondary"
-            $task6->setPriority("secondary");
+            // 1, 2
+            $task6->setPriority(2);
 
             $task7 = new Task();
             $task7->setTitle('Task en cours 5');
@@ -105,8 +105,8 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
             $task7->setMediaUrl("urlduMedia.webp");
             $task7->setCreationDate(new DateTime());
             $task7->setProject($project);
-            // "primary", "secondary"
-            $task7->setPriority("secondary");
+            // 1, 2
+            $task7->setPriority(2);
 
             $manager->persist($task3);
             $manager->persist($task4);
@@ -127,8 +127,8 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
             $task8->setMediaUrl("urlduMedia.webp");
             $task8->setCreationDate(new DateTime());
             $task8->setProject($project);
-            // "primary", "secondary"
-            $task8->setPriority("primary");
+            // 1, 2
+            $task8->setPriority(1);
 
             $task9 = new Task();
             $task9->setTitle('Task terminée 2');
@@ -138,8 +138,8 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
             $task9->setMediaUrl("urlduMedia.webp");
             $task9->setCreationDate(new DateTime());
             $task9->setProject($project);
-            // "primary", "secondary"
-            $task9->setPriority("secondary");
+            // 1, 2
+            $task9->setPriority(2);
 
             $task10 = new Task();
             $task10->setTitle('Task terminée 3');
@@ -149,8 +149,8 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
             $task10->setMediaUrl("urlduMedia.webp");
             $task10->setCreationDate(new DateTime());
             $task10->setProject($project);
-            // "primary", "secondary"
-            $task10->setPriority("secondary");
+            // 1, 2
+            $task10->setPriority(2);
 
             $manager->persist($task8);
             $manager->persist($task9);

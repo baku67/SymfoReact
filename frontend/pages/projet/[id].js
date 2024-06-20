@@ -4,6 +4,8 @@ import axios from 'axios';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
+import Link from 'next/link';
+
 import { TaskCard } from '../../src/Components/TaskCard';
 
 const ProjectDetails = () => {
@@ -66,6 +68,11 @@ const ProjectDetails = () => {
     return (
         <DndProvider backend={HTML5Backend}>
             <div>
+
+                <Link href={"/"}>
+                    {"<- Tableau de bord"}
+                </Link>
+
                 <h1>{project.title}</h1>
                 <p>Description: {project.description}</p>
                 <p>Tâches: {project.tasks.length}</p>

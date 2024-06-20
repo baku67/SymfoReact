@@ -64,6 +64,19 @@ const ProjectDetails = () => {
     }, [id]);
 
 
+
+    const [isModalFadingOut, setIsModalFadingOut] = useState(false);
+    const handleModalCloseClick = () => {
+
+        setIsModalFadingOut(true);
+
+        setTimeout(() => {
+            setSelectedTask(null);
+            setIsModalFadingOut(false);
+        }, 200)
+    }
+
+
     const moveTask = (task, status) => {
         // Logique pour mettre à jour le statut de la tâche dans la base de données
         console.log(`Moving task '${task.title}' to '${status}'`);
@@ -86,13 +99,13 @@ const ProjectDetails = () => {
                 {/* Modal TaskDetail */}
                 {selectedTask && (
 
-                    <div className="taskDetail-modal">
+                    <div className={`taskDetail-modal ${isModalFadingOut ? "taskDetail-modal-fadeOut" : ""}`}>
 
                         <div className="taskDetail-modal-header">
 
                             <div>{selectedTask.priority == 1 ? "Prioritaire" : "Secondaire"}</div>
 
-                            <span onClick={() => setSelectedTask(null)} className="taskDetail-modal-closeBtn">
+                            <span onClick={handleModalCloseClick} className="taskDetail-modal-closeBtn">
                                 <FontAwesomeIcon icon={faXmark} />
                             </span>
 

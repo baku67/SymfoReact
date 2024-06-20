@@ -81,8 +81,8 @@ const ProjectDetails = () => {
                 <div className='tasksListsContainer'>
 
 
-                    <div>
-                        <h3>A faire:</h3>
+                    <div className="tasksLists">
+                        <h3 className="tasksListsTitle">A faire:</h3>
                         <div>
                             {tasksTodo.map(task => (
                                 // <div key={task.id} className="projectRow">
@@ -94,8 +94,8 @@ const ProjectDetails = () => {
 
                     </div>
 
-                    <div>
-                        <h3>En cours:</h3>
+                    <div className="tasksLists">
+                        <h3 className="tasksListsTitle">En cours:</h3>
                         <div>
                             {tasksInProgress.map(task => (
                                 // <div key={task.id} className="projectRow">
@@ -107,8 +107,8 @@ const ProjectDetails = () => {
 
                     </div>
 
-                    <div>
-                        <h3>Terminées:</h3>
+                    <div className="tasksLists">
+                        <h3 className="tasksListsTitle">Terminées:</h3>
                         <div>
                             {completedTasks.map(task => (
                                 // <div key={task.id} className="projectRow">

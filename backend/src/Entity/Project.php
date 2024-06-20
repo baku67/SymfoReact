@@ -7,6 +7,7 @@ use App\Repository\ProjectRepository;
 // use Entity\Task;
 
 use ApiPlatform\Metadata\ApiResource;
+use Doctrine\DBAL\Types\Types;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
 
@@ -35,6 +36,11 @@ class Project
     #[Groups(['project:read', 'project:write'])]
     #[MaxDepth(1)]
     private Collection $tasks;
+
+    #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['project:read', 'project:write'])]
+    private ?string $description = null;
+    
 
     public function __construct()
     {
@@ -85,6 +91,18 @@ class Project
                 $task->setProject(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }

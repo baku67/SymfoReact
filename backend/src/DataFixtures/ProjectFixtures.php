@@ -13,12 +13,17 @@ class ProjectFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        for ($i = 1; $i <= 2; $i++) {
-            $project = new Project();
-            $project->setTitle('Project ' . $i);
-            $manager->persist($project);
-            $this->addReference('project_' . $i, $project);
-        }
+        $project1 = new Project();
+        $project1->setTitle('Project 1');
+        $project1->setDescription('Outil de gestion de projets, tâches, prioritarisation, etc...');
+        $manager->persist($project1);
+        $this->addReference('project_1', $project1);
+
+        $project2 = new Project();
+        $project2->setTitle('Project 2');
+        $project2->setDescription('Outil de gestion de projets, tâches, prioritarisation, etc...');
+        $manager->persist($project2);
+        $this->addReference('project_2', $project2);
 
         $manager->flush();
     }

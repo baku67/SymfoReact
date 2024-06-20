@@ -5,6 +5,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faSquarePlus } from '@fortawesome/free-regular-svg-icons';
 
 import Link from 'next/link';
@@ -78,128 +79,138 @@ const ProjectDetails = () => {
 
     return (
 
-        <DndProvider backend={HTML5Backend}>
+        <div className="main">
 
-            <div>
-
-                <Link href={"/"}>
-                    {"<- Tableau de bord"}
-                </Link>
-
-
-
+            <DndProvider backend={HTML5Backend}>
 
                 {/* Modal TaskDetail */}
                 {selectedTask && (
 
                     <div className="taskDetail-modal">
 
-                        {selectedTask.priority == 1 ? "Prioritaire" : "Secondaire"}
+                        <div className="taskDetail-modal-header">
 
-                        <span onClick={() => setSelectedTask(null)}>X</span>
+                            <div>{selectedTask.priority == 1 ? "Prioritaire" : "Secondaire"}</div>
+
+                            <span onClick={() => setSelectedTask(null)} className="taskDetail-modal-closeBtn">
+                                <FontAwesomeIcon icon={faXmark} />
+                            </span>
+
+                        </div>
 
                         <h4>{selectedTask.title}</h4>
                         <p>{selectedTask.text}</p>
 
                     </div>
-
                 )}
 
 
 
 
+                <div className={`main-withoutModal ${selectedTask ? "main-withoutModal-blurred" : ""}`}>
 
-                <div className="projectPageHeader">
-                    <h1 className='projectPageHeader-title'>{project.title}</h1>
-                    <p>Description: {project.description}</p>
-                    <p>Tâches: {project.tasks.length}</p>
-                </div>
-            
+                    <Link href={"/"}>
+                        <button className="backToDashboard-btn">{"<- Tableau de bord"}</button>
+                    </Link>
 
 
 
-                <div className='tasksListsContainer'>
 
-
-
-                    <div className="tasksLists">
-
-                        <div className="taskListHeader">
-                            <h3 className="tasksListsTitle">A faire:</h3>
-                            <FontAwesomeIcon icon={faSquarePlus} />
-                        </div>
-                        
-
-                        <div>
-                            {tasksTodo.map(task => (
-
-                                <div key={task.id} onClick={() => handleClickTask(task)}>
-                                    <TaskCard task={task}  />
-                                </div>
-
-                            ))}
-                        </div>
-
+                    <div className="projectPageHeader">
+                        <h1 className='projectPageHeader-title'>{project.title}</h1>
+                        <p>Description: {project.description}</p>
+                        <p>Tâches: {project.tasks.length}</p>
                     </div>
-
-                    <div className="tasksLists">
-
-                        <div className="taskListHeader">
-                            <h3 className="tasksListsTitle">En cours:</h3>
-                            <FontAwesomeIcon icon={faSquarePlus} />
-                        </div>
-
-                        <div>
-                            {tasksInProgress.map(task => (
-
-                                <div  key={task.id} onClick={() => handleClickTask(task)}>
-                                    <TaskCard task={task}  />
-                                </div>
-
-                            ))}
-                        </div>
-
-                    </div>
-
-                    <div className="tasksLists">
-
-                        <h3 className="tasksListsTitle">Terminées:</h3>
-
-                        <div>
-                            {completedTasks.map(task => (
-
-                                <div key={task.id} onClick={() => handleClickTask(task)}>
-                                    <TaskCard task={task}  />
-                                </div>
-
-                            ))}
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-                <div>
-                    <h3>Equipe:</h3>
-                    <div>
-                        <div>
-                            <span>Xavier</span>
-                        </div>
-                        <div>
-                            <span>Pascale</span>
-                        </div>
-                    </div>
-                </div>
                 
 
 
 
-            </div>
+                    <div className='tasksListsContainer'>
 
 
-        </DndProvider>
+
+                        <div className="tasksLists">
+
+                            <div className="taskListHeader">
+                                <h3 className="tasksListsTitle">A faire:</h3>
+                                <FontAwesomeIcon icon={faSquarePlus} className="taskList-addBtn" />
+                            </div>
+                            
+
+                            <div className="taskListContent">
+                                {tasksTodo.map(task => (
+
+                                    <div key={task.id} onClick={() => handleClickTask(task)}>
+                                        <TaskCard task={task}  />
+                                    </div>
+
+                                ))}
+                            </div>
+
+                        </div>
+
+                        <div className="tasksLists">
+
+                            <div className="taskListHeader">
+                                <h3 className="tasksListsTitle">En cours:</h3>
+                                <FontAwesomeIcon icon={faSquarePlus} className="taskList-addBtn" />
+                            </div>
+
+                            <div className="taskListContent">
+                                {tasksInProgress.map(task => (
+
+                                    <div  key={task.id} onClick={() => handleClickTask(task)}>
+                                        <TaskCard task={task}  />
+                                    </div>
+
+                                ))}
+                            </div>
+
+                        </div>
+
+                        <div className="tasksLists">
+
+                            <div className="taskListHeader">
+                                <h3 className="tasksListsTitle">Terminées:</h3>
+                            </div>
+
+                            <div className="taskListContent">
+                                {completedTasks.map(task => (
+
+                                    <div key={task.id} onClick={() => handleClickTask(task)}>
+                                        <TaskCard task={task}  />
+                                    </div>
+
+                                ))}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div>
+                        <h3>Equipe:</h3>
+                        <div>
+                            <div>
+                                <span>Xavier</span>
+                            </div>
+                            <div>
+                                <span>Pascale</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+
+                </div>
+
+
+            </DndProvider>
+
+        </div>
     );
 };
 

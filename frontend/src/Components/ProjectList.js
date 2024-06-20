@@ -24,8 +24,8 @@ export default function ProjectList() {
 
 
     return (
-        <>
-            <p>Projets :</p>
+        <div className="dashboard-section">
+            <h2 className="dashboard-sectionTitle">Projets :</h2>
 
             <div className="projectRowList">
 
@@ -47,7 +47,7 @@ export default function ProjectList() {
                 ))}
 
             </div>
-        </>
+        </div>
     )
 
 }

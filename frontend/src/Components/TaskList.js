@@ -24,8 +24,8 @@ export default function TaskList() {
 
 
     return (
-        <>
-            <p>Tâches :</p>
+        <div className="dashboard-section">
+            <h2 className="dashboard-sectionTitle">Tâches :</h2>
 
             <div className="taskRowList">
 
@@ -38,7 +38,7 @@ export default function TaskList() {
                 ))}
 
             </div>
-        </>
+        </div>
     )
 
 }

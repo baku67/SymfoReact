@@ -4,6 +4,9 @@ import axios from 'axios';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSquarePlus } from '@fortawesome/free-regular-svg-icons';
+
 import Link from 'next/link';
 
 import { TaskCard } from '../../src/Components/TaskCard';
@@ -26,7 +29,6 @@ const ProjectDetails = () => {
     const [selectedTask, setSelectedTask] = useState(null);
     const handleClickTask = (task) => {
         setSelectedTask(task);
-        console.log("click task, selectedTask = " + selectedTask);
     }
 
     useEffect(() => {
@@ -92,20 +94,29 @@ const ProjectDetails = () => {
 
                     <div className="taskDetail-modal">
 
+                        {selectedTask.priority == 1 ? "Prioritaire" : "Secondaire"}
+
                         <span onClick={() => setSelectedTask(null)}>X</span>
 
+                        <h4>{selectedTask.title}</h4>
+                        <p>{selectedTask.text}</p>
+
                     </div>
-                    
+
                 )}
 
 
 
 
 
-                <h1>{project.title}</h1>
-                <p>Description: {project.description}</p>
-                <p>Tâches: {project.tasks.length}</p>
+                <div className="projectPageHeader">
+                    <h1 className='projectPageHeader-title'>{project.title}</h1>
+                    <p>Description: {project.description}</p>
+                    <p>Tâches: {project.tasks.length}</p>
+                </div>
             
+
+
 
                 <div className='tasksListsContainer'>
 
@@ -113,7 +124,11 @@ const ProjectDetails = () => {
 
                     <div className="tasksLists">
 
-                        <h3 className="tasksListsTitle">A faire:</h3>
+                        <div className="taskListHeader">
+                            <h3 className="tasksListsTitle">A faire:</h3>
+                            <FontAwesomeIcon icon={faSquarePlus} />
+                        </div>
+                        
 
                         <div>
                             {tasksTodo.map(task => (
@@ -129,7 +144,10 @@ const ProjectDetails = () => {
 
                     <div className="tasksLists">
 
-                        <h3 className="tasksListsTitle">En cours:</h3>
+                        <div className="taskListHeader">
+                            <h3 className="tasksListsTitle">En cours:</h3>
+                            <FontAwesomeIcon icon={faSquarePlus} />
+                        </div>
 
                         <div>
                             {tasksInProgress.map(task => (
@@ -161,7 +179,26 @@ const ProjectDetails = () => {
 
                 </div>
 
+
+
+                <div>
+                    <h3>Equipe:</h3>
+                    <div>
+                        <div>
+                            <span>Xavier</span>
+                        </div>
+                        <div>
+                            <span>Pascale</span>
+                        </div>
+                    </div>
+                </div>
+                
+
+
+
             </div>
+
+
         </DndProvider>
     );
 };

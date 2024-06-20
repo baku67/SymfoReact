@@ -32,9 +32,16 @@ export default function ProjectList() {
                 {projects.map(project => (
                     
                     <Link key={project.id} href={`/projet/${project.id}`}>
+
                         <div className="projectRow">
+
                             <span>{project.title}</span>
-                            <span>Tâches: {project.tasks.length}</span>
+
+                            <div>
+                                <span>Tâches: {project.tasks.length}</span>
+                            </div>
+                            
+
                         </div>
                     </Link>
                 ))}

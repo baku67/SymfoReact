@@ -78,6 +78,7 @@ p {margin: 0;}
 }
 
 .taskCard {
+  cursor: pointer;
   margin: 7px auto;
   padding: 15px;
   border-radius: 7px;
@@ -88,6 +89,12 @@ p {margin: 0;}
   flex-direction: row;
   justify-content: space-between;
   width: -webkit-fill-available;
+
+  transition: all 0.4s;
+}
+.taskCard:hover {
+  transform: scale(0.95);
+  border-color: #ffffff;
 }
 
 .taskCard-primary {
@@ -100,6 +107,10 @@ p {margin: 0;}
 
 .taskCard-completed {
   filter: brightness(0.8);
+
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
 }
 
 .tasksLists {
@@ -109,6 +120,27 @@ p {margin: 0;}
   border-radius: 5px;
 
   flex: 1;
+}
+
+
+.taskListHeader {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.projectPageHeader {
+  width: 90%;
+  margin: 15px auto;
+  background-color: #ededed;
+  padding: 10px 15px;
+
+  border-radius: 6px;
+}
+
+.projectPageHeader-title {
+  margin: 5px auto 10px auto;
 }
 
 
@@ -125,7 +157,7 @@ p {margin: 0;}
 
 
 .tasksListsTitle {
-  margin: 5px auto 11px auto;
+  margin: 0 0 7px 0;
 }
 
 

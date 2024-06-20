@@ -129,6 +129,24 @@ p {margin: 0;}
 }
 
 
+.taskDetail-modal {
+  position: absolute;
+  z-index: 99999;
+
+  width: 80%;
+  height: 80%;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 15px;
+
+  border: 1px solid rgb(153, 153, 153);
+  background-color: rgb(179, 235, 225);
+}
+
+
 
 .taskRowList {
   width: 50%;

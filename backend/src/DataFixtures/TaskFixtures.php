@@ -25,8 +25,8 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
 
             // *** Tasks à venir:
             $task1 = new Task();
-            $task1->setTitle('Task à venir 1');
-            $task1->setText('tâche à venir ');
+            $task1->setTitle('Ajouter les Users');
+            $task1->setText('Ajouter les utilisateurs (ne pas faire d\'auth n de Entreprise pour l\'instant) ');
             // "todo", "inProgress", "completed"
             $task1->setStatus("todo"); 
             $task1->setMediaUrl("urlduMedia.webp");
@@ -36,8 +36,9 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
             $task1->setPriority(1);
 
             $task2 = new Task();
-            $task2->setTitle('Task à venir 2');
-            $task2->setText('tâche à venir 2');
+            $task2->setTitle('Améliorations Dashboard grid');
+            $task2->setText('Mettre la section "En cours" en avant: full height et width
+            75%, puis "à venir" et "terminés" en colonne sur les 25% restants');
             // "todo", "inProgress", "completed"
             $task2->setStatus("todo"); 
             $task2->setMediaUrl("urlduMedia.webp");
@@ -54,7 +55,7 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
 
             // *** Tasks en cours:
             $task3 = new Task();
-            $task3->setTitle('Task en cours 1');
+            $task3->setTitle('Modal TaskDetail onClick');
             $task3->setText('tâche en cours 1');
             // "todo", "inProgress", "completed"
             $task3->setStatus("inProgress"); 
@@ -65,7 +66,7 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
             $task3->setPriority(1);
 
             $task4 = new Task();
-            $task4->setTitle('Task en cours 2');
+            $task4->setTitle('Bouton ajout Task sur taskLists');
             $task4->setText('tâche en cours 2');
             // "todo", "inProgress", "completed"
             $task4->setStatus("inProgress"); 
@@ -76,7 +77,7 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
             $task4->setPriority(1);
 
             $task5 = new Task();
-            $task5->setTitle('Task en cours 3');
+            $task5->setTitle('Tasks Draggables');
             $task5->setText('tâche en cours 3');
             // "todo", "inProgress", "completed"
             $task5->setStatus("inProgress"); 
@@ -87,7 +88,7 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
             $task5->setPriority(2);
 
             $task6 = new Task();
-            $task6->setTitle('Task en cours 4');
+            $task6->setTitle('Customisation des pages et dashboard');
             $task6->setText('tâche en cours 4');
             // "todo", "inProgress", "completed"
             $task6->setStatus("inProgress"); 
@@ -98,7 +99,7 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
             $task6->setPriority(2);
 
             $task7 = new Task();
-            $task7->setTitle('Task en cours 5');
+            $task7->setTitle('WIP Fixtures propres');
             $task7->setText('tâche en cours 5');
             // "todo", "inProgress", "completed"
             $task7->setStatus("inProgress"); 
@@ -120,7 +121,7 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
 
             // *** Tasks terminées:
             $task8 = new Task();
-            $task8->setTitle('Task terminée 1');
+            $task8->setTitle('Api platform');
             $task8->setText('tâche terminée 1');
             // "todo", "inProgress", "completed"
             $task8->setStatus("completed"); 
@@ -131,7 +132,7 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
             $task8->setPriority(1);
 
             $task9 = new Task();
-            $task9->setTitle('Task terminée 2');
+            $task9->setTitle('init Fixtures');
             $task9->setText('tâche terminée 2');
             // "todo", "inProgress", "completed"
             $task9->setStatus("completed"); 
@@ -142,7 +143,7 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
             $task9->setPriority(2);
 
             $task10 = new Task();
-            $task10->setTitle('Task terminée 3');
+            $task10->setTitle('React -> Next.js');
             $task10->setText('tâche terminée 3');
             // "todo", "inProgress", "completed"
             $task10->setStatus("completed"); 

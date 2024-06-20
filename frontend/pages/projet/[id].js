@@ -22,6 +22,13 @@ const ProjectDetails = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+
+    const [selectedTask, setSelectedTask] = useState(null);
+    const handleClickTask = (task) => {
+        setSelectedTask(task);
+        console.log("click task, selectedTask = " + selectedTask);
+    }
+
     useEffect(() => {
         if (id) {
             axios.get(`http://localhost:8000/api/projects/${id}`)
@@ -65,13 +72,35 @@ const ProjectDetails = () => {
     if (!project) return <p>No project found</p>;
 
 
+
+
     return (
+
         <DndProvider backend={HTML5Backend}>
+
             <div>
 
                 <Link href={"/"}>
                     {"<- Tableau de bord"}
                 </Link>
+
+
+
+
+                {/* Modal TaskDetail */}
+                {selectedTask && (
+
+                    <div className="taskDetail-modal">
+
+                        <span onClick={() => setSelectedTask(null)}>X</span>
+
+                    </div>
+                    
+                )}
+
+
+
+
 
                 <h1>{project.title}</h1>
                 <p>Description: {project.description}</p>
@@ -81,40 +110,50 @@ const ProjectDetails = () => {
                 <div className='tasksListsContainer'>
 
 
+
                     <div className="tasksLists">
+
                         <h3 className="tasksListsTitle">A faire:</h3>
+
                         <div>
                             {tasksTodo.map(task => (
-                                // <div key={task.id} className="projectRow">
-                                //     <span>{task.title}</span>
-                                // </div>
-                                <TaskCard key={task.id} task={task} />
+
+                                <div key={task.id} onClick={() => handleClickTask(task)}>
+                                    <TaskCard task={task}  />
+                                </div>
+
                             ))}
                         </div>
 
                     </div>
 
                     <div className="tasksLists">
+
                         <h3 className="tasksListsTitle">En cours:</h3>
+
                         <div>
                             {tasksInProgress.map(task => (
-                                // <div key={task.id} className="projectRow">
-                                //     <span>{task.title}</span>
-                                // </div>
-                                <TaskCard key={task.id} task={task} />
+
+                                <div  key={task.id} onClick={() => handleClickTask(task)}>
+                                    <TaskCard task={task}  />
+                                </div>
+
                             ))}
                         </div>
 
                     </div>
 
                     <div className="tasksLists">
+
                         <h3 className="tasksListsTitle">Terminées:</h3>
+
                         <div>
                             {completedTasks.map(task => (
-                                // <div key={task.id} className="projectRow">
-                                //     <span>{task.title}</span>
-                                // </div>
-                                <TaskCard key={task.id} task={task} />
+
+                                <div key={task.id} onClick={() => handleClickTask(task)}>
+                                    <TaskCard task={task}  />
+                                </div>
+
                             ))}
                         </div>
 

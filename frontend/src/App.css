@@ -147,7 +147,7 @@ p {margin: 0;}
 }
 
 .taskCard-completed {
-  filter: brightness(0.8);
+  filter: saturate(0.5) brightness(0.7);
 
   align-items: center;
   justify-content: flex-start;

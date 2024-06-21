@@ -47,8 +47,9 @@ class Task
     #[Groups(['task:read', 'task:write'])]
     private ?\DateTimeInterface $creationDate = null;
 
+    // Nullable en attendant de fix PRIORITY api POST
     #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: 'tasks')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     #[Groups(['task:read', 'task:read'])]
     #[MaxDepth(1)]
     private ?Project $project = null;

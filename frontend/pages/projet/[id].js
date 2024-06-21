@@ -11,6 +11,8 @@ import { faSquarePlus } from '@fortawesome/free-regular-svg-icons';
 import Link from 'next/link';
 
 import { TaskCard } from '../../src/Components/TaskCard';
+import NewTaskForm from '../../src/Components/Forms/NewTaskForm';
+import TaskForm from '../../src/Components/Forms/TaskForm';
 
 const ProjectDetails = () => {
 
@@ -32,6 +34,12 @@ const ProjectDetails = () => {
         setSelectedTask(task);
     }
 
+    const [isNewTask, setIsNewTask] = useState(false);
+    const handleClickNewTaskBtn = () => {
+        setIsNewTask(true);
+    }
+
+
     useEffect(() => {
         if (id) {
             axios.get(`http://localhost:8000/api/projects/${id}`)
@@ -45,6 +53,7 @@ const ProjectDetails = () => {
                             const todo = tasks.filter(task => task.status === 'todo');
                             const inProgress = tasks.filter(task => task.status === 'inProgress');
                             const completed = tasks.filter(task => task.status === 'completed');
+                            setTasks(tasks);
                             setTasksTodo(todo);
                             setTasksInProgress(inProgress);
                             setCompletedTasks(completed);
@@ -72,16 +81,20 @@ const ProjectDetails = () => {
 
         setTimeout(() => {
             setSelectedTask(null);
+            setIsNewTask(false);
             setIsModalFadingOut(false);
         }, 200)
     }
+
+
+
+
 
 
     const moveTask = (task, status) => {
         // Logique pour mettre à jour le statut de la tâche dans la base de données
         console.log(`Moving task '${task.title}' to '${status}'`);
     };
-
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error loading project details: {error.message}</p>;
@@ -96,31 +109,41 @@ const ProjectDetails = () => {
 
             <DndProvider backend={HTML5Backend}>
 
-                {/* Modal TaskDetail */}
+                {/* Modal read/edit TaskDetail */}
                 {selectedTask && (
 
                     <div className={`taskDetail-modal ${isModalFadingOut ? "taskDetail-modal-fadeOut" : ""}`}>
 
-                        <div className="taskDetail-modal-header">
+                        <span onClick={handleModalCloseClick} className="taskDetail-modal-closeBtn">
+                            <FontAwesomeIcon icon={faXmark} />
+                        </span>
 
-                            <div>{selectedTask.priority == 1 ? "Prioritaire" : "Secondaire"}</div>
-
-                            <span onClick={handleModalCloseClick} className="taskDetail-modal-closeBtn">
-                                <FontAwesomeIcon icon={faXmark} />
-                            </span>
-
-                        </div>
-
-                        <h4>{selectedTask.title}</h4>
-                        <p>{selectedTask.text}</p>
+                        <TaskForm projectId={id} selectedTask={selectedTask}/>
 
                     </div>
                 )}
 
 
+                {/* Modal Create Task */}
+                {isNewTask && (
+
+                    <div className={`taskDetail-modal ${isModalFadingOut ? "taskDetail-modal-fadeOut" : ""}`}>
+
+                        <span onClick={handleModalCloseClick} className="taskDetail-modal-closeBtn">
+                            <FontAwesomeIcon icon={faXmark} />
+                        </span>
+
+                        <NewTaskForm projectId={id} />
+
+                    </div>
+
+                )}
 
 
-                <div className={`main-withoutModal ${selectedTask ? "main-withoutModal-blurred" : ""}`}>
+
+
+
+                <div className={`main-withoutModal ${selectedTask || isNewTask ? "main-withoutModal-blurred" : ""}`}>
 
                     <Link href={"/"}>
                         <button className="backToDashboard-btn">{"<- Tableau de bord"}</button>
@@ -146,7 +169,7 @@ const ProjectDetails = () => {
 
                             <div className="taskListHeader">
                                 <h3 className="tasksListsTitle">A faire:</h3>
-                                <FontAwesomeIcon icon={faSquarePlus} className="taskList-addBtn" />
+                                <FontAwesomeIcon icon={faSquarePlus} className="taskList-addBtn" onClick={handleClickNewTaskBtn} />
                             </div>
                             
 
@@ -166,7 +189,7 @@ const ProjectDetails = () => {
 
                             <div className="taskListHeader">
                                 <h3 className="tasksListsTitle">En cours:</h3>
-                                <FontAwesomeIcon icon={faSquarePlus} className="taskList-addBtn" />
+                                <FontAwesomeIcon icon={faSquarePlus} className="taskList-addBtn" onClick={handleClickNewTaskBtn} />
                             </div>
 
                             <div className="taskListContent">

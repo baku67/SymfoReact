@@ -1,52 +1,67 @@
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 
-export default function TaskForm({projectId}) {
+export default function TaskForm({projectId, submitAction, refetchTasks}) {
 
   const { register, handleSubmit, formState: { errors }} = useForm()
-
-  // const onSubmit = async (data) => {
-  //   try {
-
-  //     const response = await axios.post(
-  //       'http://localhost:8000/api/tasks',
-  //       {
-  //         ...data,
-  //         project: `/api/projects/${projectId}` // ApiPlatform expects an IRI for relations
-  //       },
-  //       {
-  //         headers: {
-  //           'Content-Type': 'application/json' // Ensure Content-Type is correctly set
-  //         }
-  //       }
-  //     );
-  //   }}
-
 
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
         'http://localhost:8000/api/tasks',
         {
-          title: "test TITRE",
-          status: "todo",
-          text: "test DESCRIPTION",
-          // project: `/api/projects/${projectId}`, 
-          priority: 1, // Ensure priority is converted to integer
+          ...data,
+          priority: parseInt(data.priority),
+          project: `/api/projects/${projectId}` // ApiPlatform expects an IRI for relations
         },
         {
           headers: {
-            'Content-Type': 'application/ld+json'
+            'Content-Type': 'application/ld+json' // Ensure Content-Type is correctly set
           }
         }
       );
-  
+
       console.log('Task created:', response.data);
-  
+      submitAction();
+      refetchTasks();
+
     } catch (error) {
-      console.error('Error creating task:', error.response.data);
+      if (error.response) {
+        console.error('Error creating task:', error.response.data);
+      } else if (error.request) {
+        console.error('No response received:', error.request);
+      } else {
+        console.error('Error setting up request:', error.message);
+      }
     }
   };
+
+
+  // *** TEST API POST
+  // const onSubmit = async (data) => {
+  //   try {
+  //     const response = await axios.post(
+  //       'http://localhost:8000/api/tasks',
+  //       {
+  //         title: "test TITRE",
+  //         status: "todo",
+  //         text: "test DESCRIPTION",
+  //         // project: `/api/projects/${projectId}`, 
+  //         priority: 1, // Ensure priority is converted to integer
+  //       },
+  //       {
+  //         headers: {
+  //           'Content-Type': 'application/ld+json'
+  //         }
+  //       }
+  //     );
+  
+  //     console.log('Task created:', response.data);
+  
+  //   } catch (error) {
+  //     console.error('Error creating task:', error.response.data);
+  //   }
+  // };
 
   
 

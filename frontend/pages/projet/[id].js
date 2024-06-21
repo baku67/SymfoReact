@@ -42,35 +42,40 @@ const ProjectDetails = () => {
 
     useEffect(() => {
         if (id) {
-            axios.get(`http://localhost:8000/api/projects/${id}`)
-                .then(response => {
-                    const projectData = response.data;
-                    setProject(projectData);
-
-                    axios.get(`http://localhost:8000/api/projects/${id}/tasks`)
-                        .then(taskResponse => {
-                            const tasks = taskResponse.data;
-                            const todo = tasks.filter(task => task.status === 'todo');
-                            const inProgress = tasks.filter(task => task.status === 'inProgress');
-                            const completed = tasks.filter(task => task.status === 'completed');
-                            setTasks(tasks);
-                            setTasksTodo(todo);
-                            setTasksInProgress(inProgress);
-                            setCompletedTasks(completed);
-                            setLoading(false);
-                        })
-                        .catch(taskError => {
-                            console.error('Error fetching tasks:', taskError);
-                            setError(taskError);
-                            setLoading(false);
-                        });
-                })
-                .catch(error => {
-                    setError(error);
-                    setLoading(false);
-                });
+          fetchProjectAndTasks();
         }
-    }, [id]);
+      }, [id]);
+    
+      const fetchProjectAndTasks = () => {
+        setLoading(true);
+        axios.get(`http://localhost:8000/api/projects/${id}`)
+          .then(response => {
+            const projectData = response.data;
+            setProject(projectData);
+    
+            axios.get(`http://localhost:8000/api/projects/${id}/tasks`)
+              .then(taskResponse => {
+                const tasks = taskResponse.data;
+                const todo = tasks.filter(task => task.status === 'todo');
+                const inProgress = tasks.filter(task => task.status === 'inProgress');
+                const completed = tasks.filter(task => task.status === 'completed');
+                setTasks(tasks);
+                setTasksTodo(todo);
+                setTasksInProgress(inProgress);
+                setCompletedTasks(completed);
+                setLoading(false);
+              })
+              .catch(taskError => {
+                console.error('Error fetching tasks:', taskError);
+                setError(taskError);
+                setLoading(false);
+              });
+          })
+          .catch(error => {
+            setError(error);
+            setLoading(false);
+          });
+      };
 
 
 
@@ -133,7 +138,7 @@ const ProjectDetails = () => {
                             <FontAwesomeIcon icon={faXmark} />
                         </span>
 
-                        <NewTaskForm projectId={id} />
+                        <NewTaskForm projectId={id} submitAction={handleModalCloseClick} refetchTasks={fetchProjectAndTasks} />
 
                     </div>
 

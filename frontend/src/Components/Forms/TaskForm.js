@@ -7,7 +7,7 @@ export default function TaskForm({selectedTask}) {
         <>
             <div className="taskDetail-modal-header">
 
-                <div>{selectedTask.priority == 1 ? "Prioritaire" : "Secondaire"}</div>
+                <div className={`priority${selectedTask.priority}`}>{selectedTask.priority == 1 ? "Prioritaire" : "Secondaire"}</div>
 
             </div>
 

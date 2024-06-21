@@ -14,6 +14,20 @@ body {
   }
 }
 
+input, select, textarea {
+  background-color: #ffffff14;
+    border: 0px;
+    color: white;
+    padding: 7px;
+    border-radius: 5px;
+}
+input:focus-visible {
+  /* outline: transparent; */
+}
+input[type="submit"] {
+  color: cyan;
+}
+
 #root {
   height: 100%;
 }
@@ -87,6 +101,16 @@ p {margin: 0;}
   color: #61dafb;
 }
 
+
+
+.priority1 {
+  background-color: gold;
+  color: black;
+}
+.priority2 {
+  background-color: #aebaf5;
+  color: black;
+}
 
 
 .projectRowList {
@@ -188,15 +212,25 @@ p {margin: 0;}
   margin: 5px auto 10px auto;
 }
 
+.tasksListsWrapper {
+  display: inline-flex;
+  flex-direction: column;
+
+  margin: 20px auto;
+  width: 90%;
+
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 
 .tasksListsContainer {
   display: inline-flex;
   gap: 10px;
-  margin: 20px auto;
-  width: 90%;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+
+  
+
   justify-content: center;
 }
 
@@ -287,6 +321,26 @@ p {margin: 0;}
 .taskDetail-modal-closeBtn:hover {
   opacity: 0.8;
   /* transform: rotate(90deg); */
+}
+
+
+
+.addTaskGlobal-Btn {
+  cursor: pointer;
+  font-size: 1.2em;
+  color: cyan;
+  width: fit-content;
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 5px 0;
+
+  transition: all 0.4s ease;
+}
+.addTaskGlobal-Btn:hover {
+  color: greenyellow;
 }
 
 .taskList-addBtn {

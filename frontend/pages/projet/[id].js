@@ -166,63 +166,72 @@ const ProjectDetails = () => {
 
 
 
-                    <div className='tasksListsContainer'>
+                    <div className='tasksListsWrapper'>
 
 
-
-                        <div className="tasksLists">
-
-                            <div className="taskListHeader">
-                                <h3 className="tasksListsTitle">A faire:</h3>
-                                <FontAwesomeIcon icon={faSquarePlus} className="taskList-addBtn" onClick={handleClickNewTaskBtn} />
-                            </div>
-                            
-
-                            <div className="taskListContent">
-                                {tasksTodo.map(task => (
-
-                                    <div key={task.id} onClick={() => handleClickTask(task)}>
-                                        <TaskCard task={task}  />
-                                    </div>
-
-                                ))}
-                            </div>
-
+                        <div className="addTaskGlobal-Btn" onClick={handleClickNewTaskBtn}>
+                            <FontAwesomeIcon icon={faSquarePlus} className="taskList-addBtn" />
+                            <span>Ajouter une tâche</span>
                         </div>
 
-                        <div className="tasksLists">
 
-                            <div className="taskListHeader">
-                                <h3 className="tasksListsTitle">En cours:</h3>
-                                <FontAwesomeIcon icon={faSquarePlus} className="taskList-addBtn" onClick={handleClickNewTaskBtn} />
+                        <div className='tasksListsContainer'>
+
+                            <div className="tasksLists">
+
+                                <div className="taskListHeader">
+                                    <h3 className="tasksListsTitle">A faire:</h3>
+                                    <FontAwesomeIcon icon={faSquarePlus} className="taskList-addBtn" onClick={handleClickNewTaskBtn} />
+                                </div>
+                                
+
+                                <div className="taskListContent">
+                                    {tasksTodo.map(task => (
+
+                                        <div key={task.id} onClick={() => handleClickTask(task)}>
+                                            <TaskCard task={task}  />
+                                        </div>
+
+                                    ))}
+                                </div>
+
                             </div>
 
-                            <div className="taskListContent">
-                                {tasksInProgress.map(task => (
+                            <div className="tasksLists">
 
-                                    <div  key={task.id} onClick={() => handleClickTask(task)}>
-                                        <TaskCard task={task}  />
-                                    </div>
+                                <div className="taskListHeader">
+                                    <h3 className="tasksListsTitle">En cours:</h3>
+                                    <FontAwesomeIcon icon={faSquarePlus} className="taskList-addBtn" onClick={handleClickNewTaskBtn} />
+                                </div>
 
-                                ))}
+                                <div className="taskListContent">
+                                    {tasksInProgress.map(task => (
+
+                                        <div  key={task.id} onClick={() => handleClickTask(task)}>
+                                            <TaskCard task={task}  />
+                                        </div>
+
+                                    ))}
+                                </div>
+
                             </div>
 
-                        </div>
+                            <div className="tasksLists">
 
-                        <div className="tasksLists">
+                                <div className="taskListHeader">
+                                    <h3 className="tasksListsTitle">Terminées:</h3>
+                                </div>
 
-                            <div className="taskListHeader">
-                                <h3 className="tasksListsTitle">Terminées:</h3>
-                            </div>
+                                <div className="taskListContent">
+                                    {completedTasks.map(task => (
 
-                            <div className="taskListContent">
-                                {completedTasks.map(task => (
+                                        <div key={task.id} onClick={() => handleClickTask(task)}>
+                                            <TaskCard task={task}  />
+                                        </div>
 
-                                    <div key={task.id} onClick={() => handleClickTask(task)}>
-                                        <TaskCard task={task}  />
-                                    </div>
+                                    ))}
+                                </div>
 
-                                ))}
                             </div>
 
                         </div>
